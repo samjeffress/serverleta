@@ -4,7 +4,7 @@ This GitHub Action compares the current serverless state with the latest version
 Usage
 
 Create a workflow that uses this action:
-```
+```yaml
     - name: serverleta
       uses: loadfms/serverleta@v1.0.5
       with:
