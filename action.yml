@@ -38,12 +38,12 @@ runs:
     - name: Install awscli
       shell: bash
       run: |
+        echo $AWS_ACCESS_KEY_ID
         pip install awscli
         aws s3 cp s3://serverlessplans/serverless-state.json .
       env:
          AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
          AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
-         AWS_REGION: ${{inputs.aws_region}}
 
     - name: Build application
       shell: bash
