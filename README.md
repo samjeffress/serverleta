@@ -6,11 +6,12 @@ Usage
 Create a workflow that uses this action:
 ```
     - name: Serverleta Plan
-      uses: actions/serverleta@latest
+      uses: loadfms/serverleta@latest
       with:
-        s3: "s3-bucvket-name"
+        s3: "s3-bucket-name"
         build: "make build-command"
-      env:
-         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        github_token: ${{ secrets.TOKEN }}
 ```
