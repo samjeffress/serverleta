@@ -39,7 +39,7 @@ runs:
       shell: bash
       run: |
         echo $AWS_ACCESS_KEY_ID
-        pip install awscli
+        AWS_ACCESS_KEY_ID=${{ inputs.aws_access_key_id }} AWS_SECRET_ACCESS_KEY=${{ inputs.aws_secret_access_key }} pip install awscli
         AWS_ACCESS_KEY_ID=${{ inputs.aws_access_key_id }} AWS_SECRET_ACCESS_KEY=${{ inputs.aws_secret_access_key }} aws s3 cp s3://serverlessplans/serverless-state.json .
 
     - name: Build application
