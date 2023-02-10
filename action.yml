@@ -21,10 +21,6 @@ inputs:
     description: 'Aws secret access key to download latest cloudformation.'
     required: true
     default: ''
-  aws_region:
-    description: '(Optional) Aws region.'
-    required: false
-    default: 'sa-east-1'
   github_token:
     description: 'Github token to write comments in PR.'
     required: true
