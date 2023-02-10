@@ -5,13 +5,12 @@ Usage
 
 Create a workflow that uses this action:
 ```
-    - name: Serverleta Plan
-      uses: loadfms/serverleta@latest
+    - name: serverleta
+      uses: loadfms/serverleta@v1.0.2
       with:
         s3: "s3-bucket-name"
         build: "make build-command"
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         github_token: ${{ secrets.TOKEN }}
 ```

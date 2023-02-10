@@ -46,8 +46,8 @@ runs:
       with:
         args: package -p new-plan
       env:
-         AWS_ACCESS_KEY_ID: ${{ input.aws_access_key_id }}
-         AWS_SECRET_ACCESS_KEY: ${{ input.aws_secret_access_key }}
+         AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
+         AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
 
     - name: Saving cloudformation
       shell: bash
@@ -61,7 +61,7 @@ runs:
     - name: Create comment
       uses: actions/github-script@v6
       with:
-        github-token: ${{ input.TOKEN }}
+        github-token: ${{ inputs.github_token }}
         script: |
           const fs = require("fs");
           const buffer = fs.readFileSync("result.txt");
