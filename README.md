@@ -6,7 +6,7 @@ Usage
 Create a workflow that uses this action:
 ```yaml
     - name: serverleta
-      uses: loadfms/serverleta@v1.0.5
+      uses: loadfms/serverleta@v1.0.7
       with:
         s3: "s3-bucket-name"
         build: "make build-command"

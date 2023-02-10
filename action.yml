@@ -42,7 +42,7 @@ runs:
 
     - name: Build application
       shell: bash
-      run: echo ${{ inputs.build }}
+      run: ${{ inputs.build }}
 
     - name: Generate cloudformation
       uses: serverless/github-action@v3.1
