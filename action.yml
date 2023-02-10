@@ -35,7 +35,7 @@ runs:
       shell: bash
       run: |
         pip install awscli
-        aws s3 cp s3://serverlessplans/serverless-state.json .
+        aws s3 cp s3://${{inputs.s3}}/serverless-state.json .
       env:
          AWS_ACCESS_KEY_ID: ${{ inputs.aws_access_key_id }}
          AWS_SECRET_ACCESS_KEY: ${{ inputs.aws_secret_access_key }}
