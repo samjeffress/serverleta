@@ -25,6 +25,14 @@ inputs:
     description: 'Github token to write comments in PR.'
     required: true
     default: ''
+  generate_comment:
+    description: '(Optional) Whether to generate a comment or not'
+    required: false
+    default: 'true'
+  generate_cloudformation:
+    description: '(Optional) Whether to generate and save cloudformation or not'
+    required: false
+    default: 'false'
 runs:
   using: composite
   steps:
@@ -49,16 +57,15 @@ runs:
       with:
         args: package -p new-plan
 
-    - name: Saving cloudformation
-      shell: bash
-      run: cp new-plan/serverless-state.json new-serverless-state.json
-
     - name: Compare files
+      if: inputs.generate_comment == 'true'
       shell: bash
       run: |
+        cp new-plan/serverless-state.json new-serverless-state.json
         diff -u serverless-state.json new-plan/serverless-state.json > result.txt || true
 
     - name: Create comment
+      if: inputs.generate_comment == 'true'
       uses: actions/github-script@v6
       with:
         github-token: ${{ inputs.github_token }}
