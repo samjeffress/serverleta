@@ -35,7 +35,7 @@ On your deploy action add these lines:
 
 ### Add comment with plan
 
-On your pr_hook.yml add these lines:
+On your pull request action add these lines:
 ```yaml
     - name: serverleta
       uses: loadfms/serverleta@v1.0.8
