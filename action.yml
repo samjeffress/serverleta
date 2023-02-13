@@ -92,3 +92,10 @@ runs:
               body: message
             })
           }
+
+    - name: Upload cloudformation
+      if: inputs.generate_cloudformation == 'true'
+      shell: bash
+      run: |
+        pip install awscli
+        aws s3 cp new-plan/serverless-state.json s3://${{inputs.s3}}/serverless-state.json
