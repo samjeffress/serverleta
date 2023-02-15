@@ -29,14 +29,10 @@ inputs:
     description: 'Github token to write comments in PR.'
     required: true
     default: ''
-  generate_comment:
-    description: '(Optional) Whether to generate a comment or not'
+  action:
+    description: '(comment/deploy) Action to serverleta execute'
     required: false
-    default: 'true'
-  generate_cloudformation:
-    description: '(Optional) Whether to generate and save cloudformation or not'
-    required: false
-    default: 'false'
+    default: ''
 runs:
   using: composite
   steps:
@@ -53,7 +49,7 @@ runs:
         args: package -p new-plan
 
     - name: Compare files
-      if: inputs.generate_comment == 'true'
+      if: inputs.action == 'comment'
       shell: bash
       run: |
         pip install awscli
@@ -66,7 +62,7 @@ runs:
         AWS_DEFAULT_REGION: ${{ inputs.aws_region }}
 
     - name: Create comment
-      if: inputs.generate_comment == 'true'
+      if: inputs.action == 'comment'
       uses: actions/github-script@v6
       with:
         github-token: ${{ inputs.github_token }}
@@ -95,7 +91,7 @@ runs:
           }
 
     - name: Upload cloudformation
-      if: inputs.generate_cloudformation == 'true'
+      if: inputs.action == 'deploy'
       shell: bash
       run: |
         aws s3 cp new-plan/serverless-state.json s3://${{inputs.s3}}/serverless-state.json
