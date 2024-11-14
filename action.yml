@@ -13,6 +13,10 @@ inputs:
     description: '(Optional) Command to build application.'
     required: false
     default: ''
+  package_args:
+    description: '(Optional) arguments to include when packaging application.'
+    required: false
+    default: ''
   aws_access_key_id:
     description: 'Aws access key to download latest cloudformation.'
     required: true
@@ -46,7 +50,7 @@ runs:
     - name: Generate cloudformation
       uses: serverless/github-action@v3.2
       with:
-        args: package -p new-plan
+        args: package -p new-plan ${{ inputs.package_args }}
 
     - name: Compare files
       if: inputs.action == 'comment'
